@@ -4,17 +4,13 @@ import QtQuick.Dialogs 1.2
 
 ApplicationWindow {
     visible: true
-    width: 640
-    height: 480
+    width: 480
+    height: 800
     title: qsTr("Hello World")
 
     menuBar: MenuBar {
         Menu {
             title: qsTr("File")
-            MenuItem {
-                text: qsTr("&Open")
-                onTriggered: console.log("Open action triggered");
-            }
             MenuItem {
                 text: qsTr("Exit")
                 onTriggered: Qt.quit();
@@ -24,8 +20,7 @@ ApplicationWindow {
 
     MainForm {
         anchors.fill: parent
-        button1.onClicked: messageDialog.show(qsTr("Button 1 pressed"))
-        button2.onClicked: messageDialog.show(qsTr("Button 2 pressed"))
+        button1.onClicked: messageDialog.show("clicked 1")
     }
 
     MessageDialog {
