@@ -20,7 +20,9 @@ ApplicationWindow {
 
     MainForm {
         anchors.fill: parent
-        button1.onClicked: messageDialog.show("clicked 1")
+        onButtonPress: {
+            messageDialog.show("clicked "+value)
+        }
     }
 
     MessageDialog {
