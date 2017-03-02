@@ -1,11 +1,14 @@
 import QtQuick 2.4
 import QtQuick.Controls 1.3
 import QtQuick.Layouts 1.1
+import QtQuick.Dialogs 1.2
 
 Item {
     id: root
     width: 480
     height: 800
+    property alias displayer: displayer
+
     property alias button0: button0
     property alias button9: button9
     property alias button8: button8
@@ -21,7 +24,7 @@ Item {
     property int bMinHeight: 32
     property int bMinWidth: 32
 
-    signal buttonPress(int value)
+    signal calcButtonPress(int value)
 
     GridLayout {
         id: gridLayout
@@ -36,7 +39,7 @@ Item {
         CalcButton {
             id: button1
             text: "1"
-            calcValue: 1
+            calcValue: 1                       
         }
 
         CalcButton {
@@ -93,4 +96,13 @@ Item {
             calcValue: 0
         }
     }
+
+    TextArea {
+        id: displayer
+        x: 8
+        y: 8
+        width: 464
+        height: 174
+    }
+
 }

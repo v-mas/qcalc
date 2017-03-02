@@ -18,31 +18,7 @@ ApplicationWindow {
         }
     }
 
-    MainForm {
-        anchors.fill: parent
-        button1.onButtonPress: buttonPress(value)
-        button2.onButtonPress: buttonPress(value)
-        button3.onButtonPress: buttonPress(value)
-        button4.onButtonPress: buttonPress(value)
-        button5.onButtonPress: buttonPress(value)
-        button6.onButtonPress: buttonPress(value)
-        button7.onButtonPress: buttonPress(value)
-        button8.onButtonPress: buttonPress(value)
-        button9.onButtonPress: buttonPress(value)
-        button0.onButtonPress: buttonPress(value)
-
-        onButtonPress: {
-            messageDialog.show("clicked "+value)
-        }
+    MainPage {
     }
 
-    MessageDialog {
-        id: messageDialog
-        title: qsTr("May I have your attention, please?")
-
-        function show(caption) {
-            messageDialog.text = caption;
-            messageDialog.open();
-        }
-    }
 }

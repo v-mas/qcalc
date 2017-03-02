@@ -9,11 +9,9 @@ Button {
     Layout.minimumWidth: 32
 
     property int calcValue
-    signal buttonPress(int value)
-
 
     onClicked: {
-        console.log("clicked "+calcValue)
-        buttonPress(calcValue)
+        calcButtonPress(calcValue)
     }
+
 }
