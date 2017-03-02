@@ -6,6 +6,17 @@ Item {
     id: root
     width: 480
     height: 800
+    property alias button0: button0
+    property alias button9: button9
+    property alias button8: button8
+    property alias button7: button7
+    property alias button6: button6
+    property alias button5: button5
+    property alias button4: button4
+    property alias button3: button3
+    property alias button2: button2
+    property alias button1: button1
+    property alias root: root
 
     property int bMinHeight: 32
     property int bMinWidth: 32
@@ -46,58 +57,40 @@ Item {
             calcValue: 4
         }
 
-        Button {
+        CalcButton {
             id: button5
             text: "5"
-            Layout.fillHeight: true
-            Layout.fillWidth: true
-            Layout.minimumHeight: bMinHeight
-            Layout.minimumWidth: bMinWidth
+            calcValue: 5
         }
 
-        Button {
+        CalcButton {
             id: button6
             text: "6"
-            Layout.fillHeight: true
-            Layout.fillWidth: true
-            Layout.minimumHeight: bMinHeight
-            Layout.minimumWidth: bMinWidth
+            calcValue: 6
         }
 
-        Button {
+        CalcButton {
             id: button7
             text: "7"
-            Layout.fillHeight: true
-            Layout.fillWidth: true
-            Layout.minimumHeight: bMinHeight
-            Layout.minimumWidth: bMinWidth
+            calcValue: 7
         }
 
-        Button {
+        CalcButton {
             id: button8
             text: "8"
-            Layout.fillHeight: true
-            Layout.fillWidth: true
-            Layout.minimumHeight: bMinHeight
-            Layout.minimumWidth: bMinWidth
+            calcValue: 8
         }
 
-        Button {
+        CalcButton {
             id: button9
             text: "9"
-            Layout.fillHeight: true
-            Layout.fillWidth: true
-            Layout.minimumHeight: bMinHeight
-            Layout.minimumWidth: bMinWidth
+            calcValue: 9
         }
 
-        Button {
+        CalcButton {
             id: button0
             text: "0"
-            Layout.fillHeight: true
-            Layout.fillWidth: true
-            Layout.minimumHeight: bMinHeight
-            Layout.minimumWidth: bMinWidth
+            calcValue: 0
         }
     }
 }

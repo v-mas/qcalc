@@ -3,12 +3,17 @@ import QtQuick.Controls 1.3
 import QtQuick.Layouts 1.1
 
 Button {
-    text: "1"
-    property int calcValue
-    onClicked: root.buttonPress(calcValue)
-
     Layout.fillHeight: true
     Layout.fillWidth: true
     Layout.minimumHeight: 32
     Layout.minimumWidth: 32
+
+    property int calcValue
+    signal buttonPress(int value)
+
+
+    onClicked: {
+        console.log("clicked "+calcValue)
+        buttonPress(calcValue)
+    }
 }
