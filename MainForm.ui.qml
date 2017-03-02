@@ -7,6 +7,8 @@ Item {
     id: root
     width: 480
     height: 800
+    Layout.minimumWidth: 480
+    Layout.minimumHeight: 800
     property alias displayer: displayer
 
     property alias button0: button0
@@ -26,20 +28,36 @@ Item {
 
     signal calcButtonPress(int value)
 
+    TextArea {
+        id: displayer
+        anchors.bottom: parent.bottom
+        anchors.bottomMargin: 401
+        anchors.top: parent.top
+        anchors.topMargin: 55
+        anchors.left: parent.left
+        anchors.leftMargin: 8
+        anchors.right: parent.right
+        anchors.rightMargin: 8
+    }
+
     GridLayout {
         id: gridLayout
+        y: 490
+        height: 292
+        anchors.bottom: parent.bottom
+        anchors.bottomMargin: 18
+        anchors.right: parent.right
+        anchors.rightMargin: 8
+        anchors.left: parent.left
+        anchors.leftMargin: 13
         columnSpacing: 10
         rowSpacing: 10
-        columns: 3
-        anchors.top: parent.verticalCenter
-        anchors.right: parent.right
-        anchors.bottom: parent.bottom
-        anchors.left: parent.left
+        columns: 4
 
         CalcButton {
             id: button1
             text: "1"
-            calcValue: 1                       
+            calcValue: 1
         }
 
         CalcButton {
@@ -52,6 +70,11 @@ Item {
             id: button3
             text: "3"
             calcValue: 3
+        }
+
+        CalcButton {
+            id: multiply
+            text: "X"
         }
 
         CalcButton {
@@ -73,6 +96,11 @@ Item {
         }
 
         CalcButton {
+            id: minus
+            text: "-"
+        }
+
+        CalcButton {
             id: button7
             text: "7"
             calcValue: 7
@@ -91,18 +119,27 @@ Item {
         }
 
         CalcButton {
+            id: add
+            text: "+"
+        }
+
+        CalcButton {
+            id: emptyButton1
+        }
+
+        CalcButton {
             id: button0
             text: "0"
             calcValue: 0
         }
-    }       
 
-    TextArea {
-        id: displayer
-        x: 8
-        y: 8
-        width: 464
-        height: 174
+        CalcButton {
+            id: emptyButton2
+        }
+
+        CalcButton {
+            id: equals
+            text: "="
+        }
     }
-
 }
