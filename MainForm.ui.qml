@@ -95,7 +95,7 @@ Item {
             text: "0"
             calcValue: 0
         }
-    }
+    }       
 
     TextArea {
         id: displayer

@@ -4,6 +4,5 @@
         <file>MainForm.ui.qml</file>
         <file>CalcButton.qml</file>
         <file>MainPage.qml</file>
-        <file>MessageDialog.qml</file>
     </qresource>
 </RCC>
