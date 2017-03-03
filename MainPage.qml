@@ -10,8 +10,7 @@ MainForm {
     property var enteredDigits: []
     property var enteredOperators: []
     property double one: -1
-    property string operator: "-1"
-    property double result
+    property double result: -1
 
     onCalcButtonPress: {
         switch (value) {
@@ -28,8 +27,8 @@ MainForm {
             var digit = parseFloat(value)
             enteredDigits.push(digit)
         }
-        console.log("operators: " + enteredOperators)
-        console.log("entered digits: " + enteredDigits)
+        console.log("enteredOperators: " + enteredOperators)
+        console.log("enteredDigits: " + enteredDigits)
 
         root.displayer.append("" + value)
         calculationResult(value)
@@ -39,32 +38,28 @@ MainForm {
     function calculate() {
         var enteredOperatorsCount = enteredOperators.length
 
-
         var digitsCount = enteredDigits.length
 
         var bindedDigits = bindEnteredDigits()
         var enteredOperator = enteredOperators[0]
 
-        if (operator === "-1") {
+        if (result === -1) {
             if (enteredOperatorsCount == 1 && enteredOperator !== "=") {
-                one = bindedDigits
-                operator = enteredOperator
+                result = bindedDigits
                 enteredDigits = []
                 enteredOperators = []
-                console.log("entered digits cleaned")
-                console.log("saved operator: " + operator)
-                console.log("saved first argument: " + one)
+                console.log("entered operators cleaned")
+                console.log("saved first argument: " + result)
             }
-        } else {
-             if (enteredOperatorsCount == 1) {
+        }else if(result !== -1) {
+            if (enteredOperatorsCount == 1) {
                 var second = parseFloat(bindedDigits)
 
-                var result = getResult(one, enteredOperator, second)
-                console.log("Result of: " + one + " " + enteredOperator + " "
-                            + second + " is " + result)
-                one = result
+                var newResult = getResult(result, enteredOperator, second)
+                console.log("Result of: " + result + " " + enteredOperator + " "
+                            + second + " is " + newResult)
+                result = newResult
                 enteredDigits = []
-                operator = "-1"
                 console.log("entered digits cleaned")
             }
         }
