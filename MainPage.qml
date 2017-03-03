@@ -43,7 +43,7 @@ MainForm {
         var bindedDigits = bindEnteredDigits()
         var enteredOperator = enteredOperators[0]
 
-        if (result === -1) {
+         if (result === -1) {
             if (enteredOperatorsCount == 1 && enteredOperator !== "=") {
                 result = bindedDigits
                 enteredDigits = []
@@ -51,17 +51,17 @@ MainForm {
                 console.log("entered operators cleaned")
                 console.log("saved first argument: " + result)
             }
-        }else if(result !== -1) {
-            if (enteredOperatorsCount == 1) {
+        }else if(result !== -1 && enteredOperators.length == 1) {
                 var second = parseFloat(bindedDigits)
 
                 var newResult = getResult(result, enteredOperator, second)
                 console.log("Result of: " + result + " " + enteredOperator + " "
                             + second + " is " + newResult)
                 result = newResult
+                enteredOperators = []
                 enteredDigits = []
+                console.log("entered operators cleaned")
                 console.log("entered digits cleaned")
-            }
         }
 
         console.log("bindedDigit: " + bindedDigits)
