@@ -74,8 +74,8 @@ Item {
 
         CalcButton {
             id: multiply
-            text: "X"
-            calcValue: "X"
+            text: "x"
+            calcValue: "x"
         }
 
         CalcButton {
@@ -127,7 +127,7 @@ Item {
         }
 
         CalcButton {
-            id: emptyButton1
+            id: emptyButton1   
         }
 
         CalcButton {
@@ -137,7 +137,7 @@ Item {
         }
 
         CalcButton {
-            id: emptyButton2
+            id: emptyButton2        
         }
 
         CalcButton {

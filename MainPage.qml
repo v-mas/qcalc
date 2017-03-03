@@ -7,35 +7,29 @@ MainForm {
     anchors.fill: parent
     signal calculationResult(string calcResult)
     property double result
-    property var arguments: [""] //?
+    property var enteredDigits: []
+    property var enteredOperators: []
 
     onCalcButtonPress: {
-        console.log("calc value: " + value)
-
-        var arr = ["Hi", "Hello", "Bonjour"]
-
-        // append new value to the array
-        arr.push("Hola")
-
-        console.log(arr)
-
         switch (value) {
         case "+":
-            addition(value)
-            break
         case "-":
-            break
         case "x":
-            break
         case "=":
+            enteredOperators.push(value)
             break
         default:
             var digit = parseFloat(value)
+            enteredDigits.push(digit)
         }
+        console.log("operators: " + enteredOperators)
+        console.log("digits: " + enteredDigits)
 
-        root.displayer.append("" + result)
+        root.displayer.append("" + value)
         calculationResult(value)
     }
+
+    function addToArguments(digit) {}
 
     function addition() {
         result = result + argument
