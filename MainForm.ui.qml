@@ -26,7 +26,7 @@ Item {
     property int bMinHeight: 32
     property int bMinWidth: 32
 
-    signal calcButtonPress(int value)
+    signal calcButtonPress(string value)
 
     TextArea {
         id: displayer
@@ -57,70 +57,73 @@ Item {
         CalcButton {
             id: button1
             text: "1"
-            calcValue: 1
+            calcValue: "1"
         }
 
         CalcButton {
             id: button2
             text: "2"
-            calcValue: 2
+            calcValue: "2"
         }
 
         CalcButton {
             id: button3
             text: "3"
-            calcValue: 3
+            calcValue: "3"
         }
 
         CalcButton {
             id: multiply
             text: "X"
+            calcValue: "X"
         }
 
         CalcButton {
             id: button4
             text: "4"
-            calcValue: 4
+            calcValue: "4"
         }
 
         CalcButton {
             id: button5
             text: "5"
-            calcValue: 5
+            calcValue: "5"
         }
 
         CalcButton {
             id: button6
             text: "6"
-            calcValue: 6
+            calcValue: "6"
         }
 
         CalcButton {
             id: minus
             text: "-"
+            calcValue: "-"
         }
 
         CalcButton {
             id: button7
             text: "7"
-            calcValue: 7
+            calcValue: "7"
         }
 
         CalcButton {
             id: button8
             text: "8"
-            calcValue: 8
+            calcValue: "8"
         }
 
         CalcButton {
             id: button9
             text: "9"
-            calcValue: 9
+            calcValue: "9"
         }
 
         CalcButton {
             id: add
             text: "+"
+            calcValue: "+"
         }
 
         CalcButton {
@@ -130,7 +133,7 @@ Item {
         CalcButton {
             id: button0
             text: "0"
-            calcValue: 0
+            calcValue: "0"
         }
 
         CalcButton {
@@ -140,6 +143,7 @@ Item {
         CalcButton {
             id: equals
             text: "="
+            calcValue: "="
         }
     }
 }
