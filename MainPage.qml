@@ -35,7 +35,9 @@ MainForm {
         console.log("enteredOperators: " + enteredOperators)
         console.log("enteredDigits: " + enteredDigits)
 
-        root.displayer.append("" + value)
+        var abcd = "asdf"
+
+        displayer.text += value
         calculate()
     }
 
@@ -45,12 +47,12 @@ MainForm {
         var bindedDigits = bindEnteredDigits()
 
         var lastEnteredOperator = getLastEnteredOperator()
-        var firstEnteredOperator = getFirstEnteredOperator();
+        var firstEnteredOperator = getFirstEnteredOperator()
 
         if (bindedDigits !== "" && lastEnteredOperator === "=") {
             console.log("1")
-            console.log("first arg exists "+firstArgumentExists)
-            console.log("second arg exists "+ secondArgumentExists)
+            console.log("first arg exists " + firstArgumentExists)
+            console.log("second arg exists " + secondArgumentExists)
 
             if (enteredOperators.length == 2 && firstArgumentExists
                     && secondArgumentExists) {
@@ -69,13 +71,19 @@ MainForm {
                 isAccumulatedResultExist = true
                 cleanBufors()
             }
+            calculationResult(accResult)
             console.log("Result (after =):", accResult)
         } else if (!isAccumulatedResultExist) {
             console.log("5")
-            if (enteredOperators.length == 2 && secondArgumentExists == true) {   
+            if (enteredOperators.length == 2 && secondArgumentExists == true) {
                 accResult = prepareCalculationResult(lastEnteredOperator)
                 cleanArgumentsFlags()
-                cleanBufors()
+
+                cleanEnteredDigits()
+                enteredOperators.shift()
+
+                firstArgument = accResult
+                firstArgumentExists = true
             } else if (enteredOperatorsCount == 1 && !firstArgumentExists) {
                 console.log("6")
 
@@ -111,7 +119,7 @@ MainForm {
         if (enteredOperatorsLength > 0) {
             firstEnteredOperator = enteredOperators[enteredOperatorsLength - 1]
         }
-        return firstEnteredOperator;
+        return firstEnteredOperator
     }
 
     function getLastEnteredOperator() {
@@ -120,9 +128,8 @@ MainForm {
         if (enteredOperatorsLength > 0) {
             lastEnteredOperator = enteredOperators[0]
         }
-        return lastEnteredOperator;
+        return lastEnteredOperator
     }
-
 
     function cleanArgumentsFlags() {
         firstArgumentExists = false
@@ -142,7 +149,8 @@ MainForm {
     }
 
     function prepareCalculationResult(enteredOperator) {
-        var newResult = getResult(firstArgument, enteredOperator, secondArgument)
+        var newResult = getResult(firstArgument, enteredOperator,
+                                  secondArgument)
         console.log("Result of: " + firstArgument + " " + enteredOperator + " "
                     + secondArgument + " is " + newResult)
         calculationResult(newResult)
