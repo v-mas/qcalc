@@ -16,6 +16,7 @@ MainForm {
     property bool secondArgumentExists: false
     property double firstArgument
     property double secondArgument
+    property bool cleanInNextOperation: false
 
     onCalcButtonPress: {
         switch (value) {
@@ -34,8 +35,15 @@ MainForm {
         }
         console.log("enteredOperators: " + enteredOperators)
         console.log("enteredDigits: " + enteredDigits)
-
-        var abcd = "asdf"
+//        if (cleanInNextOperation) {
+//            var lastEnteredOperator = getLastEnteredOperator()
+//            if (lastEnteredOperator === "") {
+//                displayer.text = ""
+//            } else {
+//                displayer.text += lastEnteredOperator
+//            }
+//            cleanInNextOperation = false
+//        }
 
         displayer.text += value
         calculate()
@@ -153,7 +161,16 @@ MainForm {
                                   secondArgument)
         console.log("Result of: " + firstArgument + " " + enteredOperator + " "
                     + secondArgument + " is " + newResult)
+
+        var firstEnteredOperator = getFirstEnteredOperator()
+        if (firstEnteredOperator === "" || firstEnteredOperator === "=") {
+            displayer.text = newResult
+        } else {
+            displayer.text = newResult + firstEnteredOperator
+        }
+
         calculationResult(newResult)
+        cleanInNextOperation = true
         return newResult
     }
 
