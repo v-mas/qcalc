@@ -35,15 +35,6 @@ MainForm {
         }
         console.log("enteredOperators: " + enteredOperators)
         console.log("enteredDigits: " + enteredDigits)
-//        if (cleanInNextOperation) {
-//            var lastEnteredOperator = getLastEnteredOperator()
-//            if (lastEnteredOperator === "") {
-//                displayer.text = ""
-//            } else {
-//                displayer.text += lastEnteredOperator
-//            }
-//            cleanInNextOperation = false
-//        }
 
         displayer.text += value
         calculate()
