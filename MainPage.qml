@@ -36,7 +36,6 @@ MainForm {
         console.log("enteredDigits: " + enteredDigits)
 
         root.displayer.append("" + value)
-        calculationResult(value)
         calculate()
     }
 
@@ -146,6 +145,7 @@ MainForm {
         var newResult = getResult(firstArgument, enteredOperator, secondArgument)
         console.log("Result of: " + firstArgument + " " + enteredOperator + " "
                     + secondArgument + " is " + newResult)
+        calculationResult(newResult)
         return newResult
     }
 
