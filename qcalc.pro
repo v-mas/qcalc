@@ -30,8 +30,7 @@ qnx: target.path = /tmp/$${TARGET}/bin
 else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
 
-LIBS += -LC:/OpenSSL-Win64/lib -lubsec
-INCLUDEPATH += C:/OpenSSL-Win64/include
+include(openssl.pri)
 
 DISTFILES += \
     android/AndroidManifest.xml \
@@ -41,6 +40,6 @@ DISTFILES += \
     android/build.gradle \
     android/gradle/wrapper/gradle-wrapper.properties \
     android/gradlew.bat \
-    qmldir
+    openssl.pri
 
 ANDROID_PACKAGE_SOURCE_DIR = $$PWD/android
