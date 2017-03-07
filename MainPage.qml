@@ -157,6 +157,40 @@ MainForm {
         }
         cleanInNextOperation = true
 
+       // makeGetRequest()
+        makePostRequest()
+    }
+
+    function makePostRequest(){
+        var http = new XMLHttpRequest()
+        var url = "https://qcalc-cbb53.firebaseio.com/.json";
+      //   var params = "num=22&num2=333";
+
+        var params1 = "{
+          \"item1\": \"abcd\",
+          \"item2\": \"qwer\"
+        }"
+        console.log("sent message:"+ params1)
+         http.open("POST", url, true);
+
+         // Send the proper header information along with the request
+         http.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+         http.setRequestHeader("Content-length", params1.length);
+         http.setRequestHeader("Connection", "close");
+
+         http.onreadystatechange = function() { // Call a function when the state changes.
+                     if (http.readyState == 4) {
+                         if (http.status == 200) {
+                             console.log("ok")
+                         } else {
+                             console.log("error: " + http.status)
+                         }
+                     }
+                 }
+         http.send(params1);
+    }
+
+    function makeGetRequest(){
         request('https://qcalc-cbb53.firebaseio.com/.json', function (o) {
             console.log("MyResponse:" + o.responseText)
         })
