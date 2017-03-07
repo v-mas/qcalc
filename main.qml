@@ -19,7 +19,7 @@ ApplicationWindow {
     }
 
     MainPage{
-        onCalculationResult: {
+        onPropagateCalcResult: {
             messageDialog.show(""+calcResult)
         }
     }

@@ -5,7 +5,7 @@ import "."
 
 MainForm {
     anchors.fill: parent
-    signal calculationResult(string calcResult)
+    signal propagateCalcResult(string calcResult)
 
     property var enteredDigits: []
     property var enteredOperators: []
@@ -55,13 +55,13 @@ MainForm {
 
             if (enteredOperators.length == 2 && firstArgumentExists
                     && secondArgumentExists) {
-                accResult = prepareCalculationResult(lastEnteredOperator)
+                prepareCalculationResult(lastEnteredOperator)
                 cleanArgumentsFlags()
                 cleanBufors()
             } else {
                 if (firstArgumentExists) {
                     console.log("2")
-                    accResult = prepareCalculationResult(firstEnteredOperator)
+                    prepareCalculationResult(firstEnteredOperator)
                 } else {
                     console.log("3")
                     accResult = bindedDigits
@@ -70,12 +70,12 @@ MainForm {
                 isAccumulatedResultExist = true
                 cleanBufors()
             }
-            calculationResult(accResult)
+            propagateCalcResult(accResult)
             console.log("Result (after =):", accResult)
         } else if (!isAccumulatedResultExist) {
             console.log("5")
             if (enteredOperators.length == 2 && secondArgumentExists == true) {
-                accResult = prepareCalculationResult(lastEnteredOperator)
+                prepareCalculationResult(lastEnteredOperator)
                 cleanArgumentsFlags()
 
                 cleanEnteredDigits()
@@ -100,12 +100,6 @@ MainForm {
 
                 console.log("saved second argument: " + secondArgument)
             }
-        } else if (enteredOperators.length == 1) {
-            console.log("7")
-            accResult = prepareCalculationResult()
-            isAccumulatedResultExist = true
-            cleanBufors()
-            console.log("entered digits cleaned")
         }
 
         console.log("bindedDigit: " + bindedDigits)
@@ -150,19 +144,18 @@ MainForm {
     function prepareCalculationResult(enteredOperator) {
         var newResult = getResult(firstArgument, enteredOperator,
                                   secondArgument)
-        console.log("Result of: " + firstArgument + " " + enteredOperator + " "
-                    + secondArgument + " is " + newResult)
+        propagateCalcResult(newResult)
+    }
 
+    onPropagateCalcResult: {
+        accResult = calcResult
         var firstEnteredOperator = getFirstEnteredOperator()
         if (firstEnteredOperator === "" || firstEnteredOperator === "=") {
-            displayer.text = newResult
+            displayer.text = calcResult
         } else {
-            displayer.text = newResult + firstEnteredOperator
+            displayer.text = calcResult + firstEnteredOperator
         }
-
-        calculationResult(newResult)
-        cleanInNextOperation = true
-        return newResult
+           cleanInNextOperation = true
     }
 
     function getResult(firstDigit, operator, secondDigit) {
