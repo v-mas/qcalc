@@ -2,7 +2,7 @@ TEMPLATE = app
 
 QT += qml quick widgets network core
 
-CONFIG += c++11 console
+CONFIG += c++11 console openssl-linked
 
 SOURCES += main.cpp
 
@@ -29,6 +29,9 @@ DEFINES += QT_DEPRECATED_WARNINGS
 qnx: target.path = /tmp/$${TARGET}/bin
 else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
+
+LIBS += -LC:/OpenSSL-Win64/lib -lubsec
+INCLUDEPATH += C:/OpenSSL-Win64/include
 
 DISTFILES += \
     android/AndroidManifest.xml \

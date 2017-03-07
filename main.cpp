@@ -9,8 +9,10 @@
 #include <QNetworkReply>
 #include <QUrl>
 #include <QUrlQuery>
+#include <openssl/aes.h>
 
 void sendRequest();
+void replyFinished(QNetworkReply *reply);
 
 int main(int argc, char *argv[])
 {
@@ -18,6 +20,12 @@ int main(int argc, char *argv[])
 
     QQmlApplicationEngine engine;
     engine.load(QUrl(QStringLiteral("qrc:/main.qml")));
+
+    bool issucc = QSslSocket::supportsSsl();
+    qDebug() << "issucc:" <<issucc;
+
+    QString version =  QSslSocket::sslLibraryBuildVersionString();
+    qDebug() << "issucc:" <<version;
 
     sendRequest();
 
@@ -34,7 +42,7 @@ void sendRequest(){
     QObject::connect(&mgr, SIGNAL(finished(QNetworkReply*)), &eventLoop, SLOT(quit()));
 
     // the HTTP request
-    QNetworkRequest req( QUrl( QString("http://ip.jsontest.com/") ) );
+    QNetworkRequest req( QUrl( QString("http://qcalc-cbb53.firebaseio.com/.json") ) );
     QNetworkReply *reply = mgr.get(req);
     eventLoop.exec(); // blocks stack until "finished()" has been called
 
@@ -49,3 +57,4 @@ void sendRequest(){
         delete reply;
     }
 }
+

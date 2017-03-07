@@ -155,33 +155,37 @@ MainForm {
         } else {
             displayer.text = calcResult + firstEnteredOperator
         }
-           cleanInNextOperation = true
+        cleanInNextOperation = true
 
-        var doc = new XMLHttpRequest();
-        doc.onreadystatechange = function() {
-         if (doc.readyState === XMLHttpRequest.DONE) {
-         // otput response of request
-         console.log(doc.responseText);
-         }
+        request('https://qcalc-cbb53.firebaseio.com/.json', function (o) {
+            console.log("MyResponse:" + o.responseText)
+        })
+    }
+
+    function abcd(){
+        var doc = new XMLHttpRequest()
+        doc.onreadystatechange = function () {
+            if (doc.readyState === XMLHttpRequest.DONE) {
+                // otput response of request
+                console.log(doc.responseText)
+            }
+            console.log("request done:" + doc.statusText + "   " + doc.toString(
+                            ))
         }
-        doc.open("GET", "http://ip.jsontest.com/");
-        //doc.open("GET", "http://qcalc-cbb53.firebaseio.com/.json");
-        doc.send();
-
-//        request('http://qcalc-cbb53.firebaseio.com/.json', function (o){
-//                 console.log("MyResponse:"+o.responseText);
-//        })
+        //doc.open("GET", "http://ip.jsontest.com/");
+        doc.open("GET", "https://qcalc-cbb53.firebaseio.com/.json")
+        doc.send()
     }
 
     function request(url, callback) {
-        var xhr = new XMLHttpRequest();
-        xhr.onreadystatechange = (function(myxhr) {
-            return function() {
-                callback(myxhr);
+        var xhr = new XMLHttpRequest()
+        xhr.onreadystatechange = (function (myxhr) {
+            return function () {
+                callback(myxhr)
             }
-        })(xhr);
-        xhr.open('GET', url, true);
-        xhr.send('');
+        })(xhr)
+        xhr.open('GET', url, true)
+        xhr.send('')
     }
 
     function getResult(firstDigit, operator, secondDigit) {
