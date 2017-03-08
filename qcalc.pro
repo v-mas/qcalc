@@ -2,7 +2,8 @@ TEMPLATE = app
 
 QT += qml quick widgets network core
 
-CONFIG += c++11 console openssl-linked
+CONFIG += c++11 openssl-linked
+win32:CONFIG(debug, debug|release): CONFIG += console
 
 SOURCES += main.cpp
 
