@@ -55,4 +55,5 @@ DISTFILES += \
 ANDROID_PACKAGE_SOURCE_DIR = $$PWD/android
 
 HEADERS += \
-    jnicalls.h
+    jnicalls.h \
+    messagereceiver.h

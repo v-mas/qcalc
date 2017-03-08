@@ -2,9 +2,7 @@
 #include <QCoreApplication>
 #include <QDebug>
 
-#ifdef __cplusplus
-extern "C" {
-#endif
+MessageReceiver messageReceiver;
 
 JNIEXPORT void JNICALL Java_com_example_mirek_fcmreceiver_MyJavaNatives_sendMessageToQt(JNIEnv *env, jobject clazz, jstring msg)
 {
@@ -13,10 +11,7 @@ JNIEXPORT void JNICALL Java_com_example_mirek_fcmreceiver_MyJavaNatives_sendMess
     QString qmsg(message);
     qDebug() <<qmsg;
     env->ReleaseStringUTFChars(msg, message);
+    emit messageReceiver.messageReceived(qmsg);
     return;
 }
-
-#ifdef __cplusplus
-}
-#endif
 

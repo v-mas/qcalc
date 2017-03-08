@@ -9,8 +9,10 @@
 #include <QNetworkReply>
 #include <QUrl>
 #include <QUrlQuery>
+#include <QQmlContext>
 #include <openssl/aes.h>
-#include <jnicalls.h>
+#include "jnicalls.h"
+#include "messagereceiver.h"
 
 void sendRequest();
 void replyFinished(QNetworkReply *reply);
@@ -20,6 +22,11 @@ int main(int argc, char *argv[])
     QApplication app(argc, argv);
 
     QQmlApplicationEngine engine;
+
+    qmlRegisterUncreatableType<MessageReceiver>("com.mirek.Receiver", 1, 0, "MessageReceiver", "do not create message receiver");
+
+    engine.rootContext()->setContextProperty("messageReceiver", &messageReceiver);
+
     engine.load(QUrl(QStringLiteral("qrc:/main.qml")));
 
     bool issucc = QSslSocket::supportsSsl();
