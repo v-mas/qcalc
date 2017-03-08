@@ -1,11 +1,17 @@
 TEMPLATE = app
 
 QT += qml quick widgets network core
+android: QT+=androidextras
 
 CONFIG += c++11 openssl-linked
 win32:CONFIG(debug, debug|release): CONFIG += console
 
-SOURCES += main.cpp
+SOURCES += main.cpp \
+    jnicalls.cpp
+
+OTHER_FILES += \
+    android/src/java/com/example/mirek/MyFirebaseMessagesService.java
+
 
 RESOURCES += qml.qrc
 
@@ -41,6 +47,12 @@ DISTFILES += \
     android/build.gradle \
     android/gradle/wrapper/gradle-wrapper.properties \
     android/gradlew.bat \
-    openssl.pri
+    openssl.pri \
+    android/src/java/com/example/mirek/fcmreceiver/FirebaseTokenProvider.java \
+    android/src/java/com/example/mirek/fcmreceiver/MyFirebaseMessagesService.java \
+    android/google-services.json
 
 ANDROID_PACKAGE_SOURCE_DIR = $$PWD/android
+
+HEADERS += \
+    jnicalls.h

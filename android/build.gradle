@@ -4,6 +4,7 @@ buildscript {
     }
 
     dependencies {
+        classpath 'com.google.gms:google-services:3.0.0'
         classpath 'com.android.tools.build:gradle:1.1.0'
     }
 }
@@ -18,6 +19,7 @@ apply plugin: 'com.android.application'
 
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
+        compile 'com.google.firebase:firebase-messaging:10.2.0'
 }
 
 android {
@@ -38,6 +40,10 @@ android {
 
     buildToolsVersion androidBuildToolsVersion
 
+     defaultConfig{
+             applicationId "com.example.mirek.fcmreceiver"
+     }
+
     sourceSets {
         main {
             manifest.srcFile 'AndroidManifest.xml'
@@ -55,3 +61,4 @@ android {
         abortOnError false
     }
 }
+apply plugin: 'com.google.gms.google-services'

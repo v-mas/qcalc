@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "519962632397",
+    "firebase_url": "https://qcalc-cbb53.firebaseio.com",
+    "project_id": "qcalc-cbb53",
+    "storage_bucket": "qcalc-cbb53.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:519962632397:android:083709456e87425f",
+        "android_client_info": {
+          "package_name": "com.example.mirek.fcmreceiver"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "519962632397-p0ute9n0tqj8ct0n43i4a4li670d72tj.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.mirek.fcmreceiver",
+            "certificate_hash": "de9a39b51d6489aa8558fc33bff085d8b650c6de"
+          }
+        },
+        {
+          "client_id": "519962632397-p9r44s37070err01jqqr5a1g2rk6ofhj.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBasnU0gEfifotGNaYA4vs3pgQBWhdyWnM"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "519962632397-p9r44s37070err01jqqr5a1g2rk6ofhj.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

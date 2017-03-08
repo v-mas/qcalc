@@ -10,6 +10,7 @@
 #include <QUrl>
 #include <QUrlQuery>
 #include <openssl/aes.h>
+#include <jnicalls.h>
 
 void sendRequest();
 void replyFinished(QNetworkReply *reply);
