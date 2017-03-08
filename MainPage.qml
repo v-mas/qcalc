@@ -158,18 +158,17 @@ MainForm {
         cleanInNextOperation = true
 
        // makeGetRequest()
-        makePostRequest()
+        sendResultToFirebase(calcResult)
     }
 
-    function makePostRequest(){
+    function sendResultToFirebase(calcResult){
         var http = new XMLHttpRequest()
         var url = "https://qcalc-cbb53.firebaseio.com/.json";
-      //   var params = "num=22&num2=333";
 
-        var params1 = "{
-          \"item1\": \"abcd\",
-          \"item2\": \"qwer\"
-        }"
+        var jsonBuild = new Object()
+        jsonBuild.result = calcResult
+        var params1 = JSON.stringify(jsonBuild)
+
         console.log("sent message:"+ params1)
          http.open("POST", url, true);
 
