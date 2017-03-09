@@ -37,7 +37,6 @@ qnx: target.path = /tmp/$${TARGET}/bin
 else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
 
-include(openssl.pri)
 
 DISTFILES += \
     android/AndroidManifest.xml \
@@ -47,13 +46,17 @@ DISTFILES += \
     android/build.gradle \
     android/gradle/wrapper/gradle-wrapper.properties \
     android/gradlew.bat \
-    openssl.pri \
     android/src/java/com/example/mirek/fcmreceiver/FirebaseTokenProvider.java \
     android/src/java/com/example/mirek/fcmreceiver/MyFirebaseMessagesService.java \
-    android/google-services.json
+    android/google-services.json \
+    openssl.pri \
+    paths.pri
 
 ANDROID_PACKAGE_SOURCE_DIR = $$PWD/android
 
 HEADERS += \
     jnicalls.h \
     messagereceiver.h
+
+include(paths.pri)
+include(openssl.pri)
