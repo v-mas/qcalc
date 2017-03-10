@@ -12,7 +12,7 @@ public:
     MessageReceiver(): QObject(nullptr){}
 
 signals:
-    void messageReceived(QString) const;
+    void messageReceived(const QString &message) const;
 };
 
 #endif // MESSAGERECEIVER_H

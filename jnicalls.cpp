@@ -12,8 +12,7 @@ JNIEXPORT void JNICALL Java_com_example_mirek_fcmreceiver_MyJavaNatives_sendMess
     Q_UNUSED(clazz);
     QString qmsg = QAndroidJniObject::fromLocalRef(msg).toString();
     qDebug() << qmsg;
-//    emit messageReceiver.messageReceived(qmsg);
-    QMetaObject::invokeMethod(&messageReceiver, "onMessageReceived", Qt::QueuedConnection, Q_ARG(QString, qmsg));
+    emit messageReceiver.messageReceived(qmsg);
     return;
 }
 

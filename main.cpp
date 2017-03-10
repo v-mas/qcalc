@@ -24,20 +24,22 @@ int main(int argc, char *argv[])
     QQmlApplicationEngine engine;
     qDebug() << "starting aplication";
 
+    bool issucc = QSslSocket::supportsSsl();
+    QString version =  QSslSocket::sslLibraryBuildVersionString();
+    qDebug() << "SSL:" << issucc << " version:" << version;
+
     QAndroidJniObject token = QAndroidJniObject::callStaticObjectMethod("com/example/mirek/fcmreceiver/FirebaseTokenProvider", "getDeviceToken", "()Ljava/lang/String;");
     qDebug() << "FCM Device token: " << token.toString();
 
+    QThread * qmlThread = QThread::currentThread();
+    QtAndroid::runOnAndroidThreadSync(
+                [&]() -> void {
+                    messageReceiver.moveToThread(qmlThread);
+                });
+
     qmlRegisterUncreatableType<MessageReceiver>("com.mirek.Receiver", 1, 0, "MessageReceiver", "do not create message receiver");
-
     engine.rootContext()->setContextProperty("messageReceiver", &messageReceiver);
-
     engine.load(QUrl(QStringLiteral("qrc:/main.qml")));
-
-    bool issucc = QSslSocket::supportsSsl();
-    qDebug() << "issucc:" <<issucc;
-
-    QString version =  QSslSocket::sslLibraryBuildVersionString();
-    qDebug() << "issucc:" <<version;
 
     sendRequest();
 
