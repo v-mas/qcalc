@@ -1,18 +1,19 @@
 #include <QApplication>
 #include <QQmlApplicationEngine>
 #include <QSslSocket>
- #include <QtNetwork>
+#include <QtNetwork>
 #include <QCoreApplication>
 #include <QDebug>
+#include <QNetworkReply>
 #include <QNetworkAccessManager>
 #include <QNetworkRequest>
-#include <QNetworkReply>
 #include <QUrl>
 #include <QUrlQuery>
 #include <QQmlContext>
 #include <openssl/aes.h>
 #include "jnicalls.h"
 #include "messagereceiver.h"
+#include <QAndroidJniObject>
 
 void sendRequest();
 void replyFinished(QNetworkReply *reply);
@@ -20,8 +21,11 @@ void replyFinished(QNetworkReply *reply);
 int main(int argc, char *argv[])
 {
     QApplication app(argc, argv);
-
     QQmlApplicationEngine engine;
+    qDebug() << "starting aplication";
+
+    QAndroidJniObject token = QAndroidJniObject::callStaticObjectMethod("com/example/mirek/fcmreceiver/FirebaseTokenProvider", "getDeviceToken", "()Ljava/lang/String;");
+    qDebug() << "FCM Device token: " << token.toString();
 
     qmlRegisterUncreatableType<MessageReceiver>("com.mirek.Receiver", 1, 0, "MessageReceiver", "do not create message receiver");
 

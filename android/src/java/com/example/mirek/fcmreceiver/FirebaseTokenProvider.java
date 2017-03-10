@@ -15,4 +15,8 @@ public class FirebaseTokenProvider extends FirebaseInstanceIdService{
         Log.d(TAG, "Refreshed token: " + refreshedToken);
 
     }
+
+    public static String getDeviceToken() {
+        return FirebaseInstanceId.getInstance().getToken();
+    }
 }

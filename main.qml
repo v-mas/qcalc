@@ -24,6 +24,15 @@ ApplicationWindow {
         }
     }
 
+    Connections {
+        target: messageReceiver
+        onMessageReceived: {
+            console.log("message received")
+            console.log(message)
+            messageDialog.show("message received: "+message)
+        }
+    }
+
     MessageDialog{
         id: messageDialog
         title: qsTr("May I have your attention, please?")
