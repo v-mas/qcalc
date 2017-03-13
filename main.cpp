@@ -31,7 +31,7 @@ int main(int argc, char *argv[])
     QString version =  QSslSocket::sslLibraryBuildVersionString();
     qDebug() << "SSL:" << issucc << " version:" << version;
 
-    sendRequest();
+    //sendRequest();
 
 #ifdef Q_OS_ANDROID
     QAndroidJniObject token = QAndroidJniObject::callStaticObjectMethod("com/example/mirek/fcmreceiver/FirebaseTokenProvider", "getDeviceToken", "()Ljava/lang/String;");

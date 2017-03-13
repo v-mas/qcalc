@@ -16,4 +16,6 @@ DISTFILES += \
     android/gradlew.bat \
     android/src/java/com/example/mirek/fcmreceiver/FirebaseTokenProvider.java \
     android/src/java/com/example/mirek/fcmreceiver/MyFirebaseMessagesService.java \
-    android/google-services.json
+    android/google-services.json \
+    $$PWD/android/jniLibs/libcrypto.so \
+    $$PWD/android/jniLibs/libssl.so
