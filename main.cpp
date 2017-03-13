@@ -32,8 +32,11 @@ int main(int argc, char *argv[])
     qDebug() << "FCM Device token: " << token.toString();
 
     QThread * qmlThread = QThread::currentThread();
+    QThread * androidUIThread = nullptr;
+
     QtAndroid::runOnAndroidThreadSync(
                 [&]() -> void {
+                    androidUIThread = QThread::currentThread();
                     messageReceiver.moveToThread(qmlThread);
                 });
 
@@ -43,7 +46,11 @@ int main(int argc, char *argv[])
 
     sendRequest();
 
-    return app.exec();
+    int result = app.exec();
+
+    messageReceiver.moveToThread(androidUIThread);
+
+    return result;
 }
 
 void sendRequest(){
