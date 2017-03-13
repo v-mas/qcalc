@@ -61,18 +61,15 @@
 
     <!-- For adding service(s) please check: https://wiki.qt.io/AndroidServices -->
 
-        <service
-            android:name=".MyFirebaseMessagesService"
-            android:enabled="true"
-            android:exported="true" >
+        <service android:name=".MyFirebaseMessagesService" android:enabled="true" android:exported="true">
             <intent-filter>
-                <action android:name="com.google.firebase.MESSAGING_EVENT" />
+                <action android:name="com.google.firebase.MESSAGING_EVENT"/>
             </intent-filter>
         </service>
 
         <service android:name=".FirebaseTokenProvider">
             <intent-filter>
-                <action android:name="com.google.firebase.INSTANCE_ID_EVENT" />
+                <action android:name="com.google.firebase.INSTANCE_ID_EVENT"/>
             </intent-filter>
         </service>
 

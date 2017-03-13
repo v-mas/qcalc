@@ -11,9 +11,12 @@
 #include <QUrlQuery>
 #include <QQmlContext>
 #include <openssl/aes.h>
-#include "jnicalls.h"
 #include "messagereceiver.h"
+
+#ifdef Q_OS_ANDROID
+#include <QtAndroid>
 #include <QAndroidJniObject>
+#endif
 
 void sendRequest();
 void replyFinished(QNetworkReply *reply);
@@ -28,28 +31,32 @@ int main(int argc, char *argv[])
     QString version =  QSslSocket::sslLibraryBuildVersionString();
     qDebug() << "SSL:" << issucc << " version:" << version;
 
+    sendRequest();
+
+#ifdef Q_OS_ANDROID
     QAndroidJniObject token = QAndroidJniObject::callStaticObjectMethod("com/example/mirek/fcmreceiver/FirebaseTokenProvider", "getDeviceToken", "()Ljava/lang/String;");
     qDebug() << "FCM Device token: " << token.toString();
 
-    QThread * qmlThread = QThread::currentThread();
+    QThread * qmlThread = engine.thread();
     QThread * androidUIThread = nullptr;
 
     QtAndroid::runOnAndroidThreadSync(
                 [&]() -> void {
                     androidUIThread = QThread::currentThread();
-                    messageReceiver.moveToThread(qmlThread);
+                    MessageReceiver::instance()->moveToThread(qmlThread);
                 });
 
     qmlRegisterUncreatableType<MessageReceiver>("com.mirek.Receiver", 1, 0, "MessageReceiver", "do not create message receiver");
-    engine.rootContext()->setContextProperty("messageReceiver", &messageReceiver);
+    engine.rootContext()->setContextProperty("messageReceiver", MessageReceiver::instance());
     engine.load(QUrl(QStringLiteral("qrc:/main.qml")));
-
-    sendRequest();
 
     int result = app.exec();
 
-    messageReceiver.moveToThread(androidUIThread);
-
+    MessageReceiver::instance()->moveToThread(androidUIThread);
+#else
+    engine.load(QUrl(QStringLiteral("qrc:/main.qml")));
+    int result = app.exec();
+#endif
     return result;
 }
 
