@@ -35,14 +35,13 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 
 DISTFILES += \
     openssl.pri \
-    paths.pri \
-    android.pri
+    paths.pri
 
 HEADERS += \
     messagereceiver.h
 
 include(paths.pri)
 include(openssl.pri)
-android: include(android.pri)
+android: include(android/android.pri)
 
 

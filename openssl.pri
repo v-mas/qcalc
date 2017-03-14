@@ -15,15 +15,16 @@ win32 {
     INSTALLS += dllossl
 
 } else:android {
-    equals(ANDROID_TARGET_ARCH, armeabi-v7a){
-    LIBS += $$PWD/android/jniLibs/arm/libcrypto.so \
-            $$PWD/android/jniLibs/arm/libssl.so
+    contains(ANDROID_TARGET_ARCH, armeabi-v7a){
+        LIBS += \
+            $$PWD/android/jniLibs/armeabi/libcrypto.so \
+            $$PWD/android/jniLibs/armeabi/libssl.so
     }
-    equals(ANDROID_TARGET_ARCH, x86){
-    LIBS += $$PWD/android/jniLibs/x86/libcrypto.so \
+    contains(ANDROID_TARGET_ARCH, x86){
+        LIBS += \
+            $$PWD/android/jniLibs/x86/libcrypto.so \
             $$PWD/android/jniLibs/x86/libssl.so
     }
-
 } else {
 
 }
