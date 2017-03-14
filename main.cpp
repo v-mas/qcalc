@@ -10,7 +10,7 @@
 #include <QUrl>
 #include <QUrlQuery>
 #include <QQmlContext>
-#include <openssl/aes.h>
+#include <openssl/crypto.h>
 #include "messagereceiver.h"
 
 #ifdef Q_OS_ANDROID
@@ -28,8 +28,10 @@ int main(int argc, char *argv[])
     qDebug() << "starting aplication";
 
     bool issucc = QSslSocket::supportsSsl();
+    QString ver(SSLeay_version(SSLEAY_VERSION));
+    QString builton(SSLeay_version(SSLEAY_BUILT_ON));
     QString version =  QSslSocket::sslLibraryBuildVersionString();
-    qDebug() << "SSL:" << issucc << " version:" << version;
+    qDebug() << "SSL:" << issucc << " version:" << ver << "built on: "<< builton << "version number:" << SSLeay() << "version2:" <<version;
 
     //sendRequest();
 
@@ -61,7 +63,7 @@ int main(int argc, char *argv[])
 }
 
 void sendRequest(){
-
+     qDebug() << "Sending request...";
     // create custom temporary event loop on stack
     QEventLoop eventLoop;
 

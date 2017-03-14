@@ -45,6 +45,4 @@ include(paths.pri)
 include(openssl.pri)
 android: include(android.pri)
 
-contains(ANDROID_TARGET_ARCH,armeabi-v7a) {
-    ANDROID_EXTRA_LIBS =
-}
+

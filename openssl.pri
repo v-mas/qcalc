@@ -3,7 +3,7 @@ win32 {
     #    LIBS += -L$${OPENSSL_DIR}/lib -lubsec
     #    PRE_TARGETDEPS += $${OPENSSL_DIR}/lib/ubsec.lib
     #shared libraries:
-    #    LIBS += "$${OPENSSL_DIR}/libeay32.dll" "$${OPENSSL_DIR}/libssl32.dll" "$${OPENSSL_DIR}/ssleay32.dll"
+        LIBS += "$${OPENSSL_DIR}/libeay32.dll" "$${OPENSSL_DIR}/libssl32.dll" "$${OPENSSL_DIR}/ssleay32.dll"
     CONFIG(release, debug|release): DESTDIR = $$OUT_PWD/release
     CONFIG(debug, debug|release): DESTDIR = $$OUT_PWD/debug
 
@@ -15,6 +15,14 @@ win32 {
     INSTALLS += dllossl
 
 } else:android {
+    equals(ANDROID_TARGET_ARCH, armeabi-v7a){
+    LIBS += $$PWD/android/jniLibs/arm/libcrypto.so \
+            $$PWD/android/jniLibs/arm/libssl.so
+    }
+    equals(ANDROID_TARGET_ARCH, x86){
+    LIBS += $$PWD/android/jniLibs/x86/libcrypto.so \
+            $$PWD/android/jniLibs/x86/libssl.so
+    }
 
 } else {
 
