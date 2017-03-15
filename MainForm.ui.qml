@@ -7,8 +7,8 @@ Item {
     id: root
     width: 480
     height: 800
-    Layout.minimumWidth: 480
-    Layout.minimumHeight: 800
+    Layout.minimumWidth: 240
+    Layout.minimumHeight: 400
     property alias displayer: displayer
 
     property alias button0: button0
@@ -23,33 +23,34 @@ Item {
     property alias button1: button1
     property alias root: root
 
-    property int bMinHeight: 32
-    property int bMinWidth: 32
+    readonly property int bMinHeight: 32
+    readonly property int bMinWidth: 32
+    readonly property int defaultMargin: 10
 
     signal calcButtonPress(string value)
 
     TextArea {
         id: displayer
-        anchors.bottom: parent.bottom
-        anchors.bottomMargin: 401
         anchors.top: parent.top
         anchors.topMargin: 55
-        anchors.left: parent.left
-        anchors.leftMargin: 8
         anchors.right: parent.right
-        anchors.rightMargin: 8
+        anchors.rightMargin: defaultMargin
+        anchors.bottom: parent.verticalCenter
+        anchors.bottomMargin: defaultMargin
+        anchors.left: parent.left
+        anchors.leftMargin: defaultMargin
     }
 
     GridLayout {
         id: gridLayout
-        y: 490
-        height: 292
-        anchors.bottom: parent.bottom
-        anchors.bottomMargin: 18
+        anchors.top: displayer.bottom
+        anchors.topMargin: defaultMargin
         anchors.right: parent.right
-        anchors.rightMargin: 8
+        anchors.rightMargin: defaultMargin
+        anchors.bottom: parent.bottom
+        anchors.bottomMargin: defaultMargin
         anchors.left: parent.left
-        anchors.leftMargin: 13
+        anchors.leftMargin: defaultMargin
         columnSpacing: 10
         rowSpacing: 10
         columns: 4
@@ -127,7 +128,7 @@ Item {
         }
 
         CalcButton {
-            id: emptyButton1   
+            enabled: false
         }
 
         CalcButton {
@@ -137,7 +138,7 @@ Item {
         }
 
         CalcButton {
-            id: emptyButton2        
+            enabled: false
         }
 
         CalcButton {
