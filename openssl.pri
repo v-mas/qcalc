@@ -16,14 +16,13 @@ win32 {
 
 } else:android {
     equals(ANDROID_TARGET_ARCH, armeabi-v7a){
-    LIBS += $$PWD/android/jniLibs/arm/libcrypto.a \
-            $$PWD/android/jniLibs/arm/libssl.a
+    LIBS += $$PWD/android/jniLibs/armeabi/libcrypto.so \
+            $$PWD/android/jniLibs/armeabi/libssl.so
     }
     equals(ANDROID_TARGET_ARCH, x86){
     LIBS += $$PWD/android/jniLibs/x86/libcryptoArm.so \
             $$PWD/android/jniLibs/x86/libsslArm.so
     }
-
 } else {
 
 }

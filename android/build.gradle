@@ -17,10 +17,6 @@ allprojects {
 
 apply plugin: 'com.android.application'
 
-dependencies {
-    compile fileTree(dir: 'libs', include: ['*.jar'])
-        compile 'com.google.firebase:firebase-messaging:10.2.0'
-}
 
 android {
     /*******************************************************
@@ -40,9 +36,9 @@ android {
 
     buildToolsVersion androidBuildToolsVersion
 
-     defaultConfig{
-             applicationId "com.example.mirek.fcmreceiver"
-     }
+    defaultConfig{
+        applicationId "com.example.mirek.fcmreceiver"
+    }
 
     sourceSets {
         main {
@@ -54,11 +50,17 @@ android {
             renderscript.srcDirs = ['src']
             assets.srcDirs = ['assets']
             jniLibs.srcDirs = ['libs']
-       }
+        }
     }
 
     lintOptions {
         abortOnError false
     }
 }
+
+dependencies {
+    compile fileTree(dir: 'libs', include: ['*.jar'])
+    compile 'com.google.firebase:firebase-messaging:10.2.0'
+}
+
 apply plugin: 'com.google.gms.google-services'

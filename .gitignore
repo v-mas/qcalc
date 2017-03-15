@@ -71,3 +71,7 @@ Thumbs.db
 # Android
 gradle.properties
 local.properties
+.idea/
+.gradle/
+.build/
+*.iml
