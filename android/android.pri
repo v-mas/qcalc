@@ -17,6 +17,7 @@ DISTFILES += \
     $$MODULE_DIR/google-services.json \
     $$MODULE_DIR/AndroidManifest.xml \
     $$MODULE_DIR/res/values/libs.xml \
+    $$MODULE_DIR/src/java/com/example/mirek/fcmreceiver/MyApplication.java \
     $$MODULE_DIR/src/java/com/example/mirek/fcmreceiver/FirebaseTokenProvider.java \
     $$MODULE_DIR/src/java/com/example/mirek/fcmreceiver/MyFirebaseMessagesService.java \
     $$MODULE_DIR/jniLibs/armeabi/libcrypto.so \
@@ -29,7 +30,6 @@ contains(ANDROID_TARGET_ARCH,armeabi-v7a) {
         $$MODULE_DIR/jniLibs/armeabi/libcrypto.so \
         $$MODULE_DIR/jniLibs/armeabi/libssl.so
 }
-
 contains(ANDROID_TARGET_ARCH, x86) {
     ANDROID_EXTRA_LIBS = \
         $$MODULE_DIR/jniLibs/x86/libcrypto.so \

@@ -29,9 +29,9 @@ int main(int argc, char *argv[])
 
     bool issucc = QSslSocket::supportsSsl();
     QString ver(SSLeay_version(SSLEAY_VERSION));
-    QString builton(SSLeay_version(SSLEAY_BUILT_ON));
     QString version =  QSslSocket::sslLibraryBuildVersionString();
-    qDebug() << "SSL:" << issucc << " version:" << ver << "built on: "<< builton << "version number:" << SSLeay() << "version2:" <<version;
+    QString version2 =  QSslSocket::sslLibraryVersionString();
+    qDebug() << "SSL:" << issucc << " priv_vers:" << ver << "priv_verNum:" << SSLeay() << "version:" << version << "version2:" << version2;
 
     //sendRequest();
 

@@ -11,8 +11,8 @@ public class MyApplication extends QtApplication {
 //        System.out.println("natives dir:"+ nativeDir);
 
 //        try {
-//            System.load(nativeDir + "libcryptoArm.so");
-//            System.load(nativeDir + "libsslArm.so");
+//            System.load(nativeDir + "libcrypto.so");
+//            System.load(nativeDir + "libssl.so");
 //        }catch(UnsatisfiedLinkError unsatisfiedLinkError){
 //            System.out.println("librypto.so or libssl.so load error");
 //        }
