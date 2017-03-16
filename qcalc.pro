@@ -6,7 +6,8 @@ CONFIG += c++11 openssl-linked
 win32:CONFIG(debug, debug|release): CONFIG += console
 
 SOURCES += main.cpp \
-    messagereceiver.cpp
+    messagereceiver.cpp \
+    sharer.cpp
 
 RESOURCES += qml.qrc
 
@@ -38,7 +39,8 @@ DISTFILES += \
     paths.pri
 
 HEADERS += \
-    messagereceiver.h
+    messagereceiver.h \
+    sharer.h
 
 include(paths.pri)
 include(openssl.pri)

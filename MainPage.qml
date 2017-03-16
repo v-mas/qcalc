@@ -2,6 +2,7 @@ import QtQuick 2.4
 import QtQuick.Controls 1.3
 import QtQuick.Dialogs 1.2
 import "."
+import com.mirek.Wonderland 1.0
 
 MainForm {
     anchors.fill: parent
@@ -17,6 +18,15 @@ MainForm {
     property double firstArgument
     property double secondArgument
     property bool cleanInNextOperation: false
+
+    Sharer {
+        id: sharer
+    }
+
+    btnShare.onClicked: {
+        console.log("sharing: "+displayer.text)
+        sharer.share(displayer.text)
+    }
 
     onCalcButtonPress: {
         switch (value) {
