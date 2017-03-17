@@ -5,5 +5,7 @@
         <file>CalcButton.qml</file>
         <file>MainPage.qml</file>
         <file>CalculatorLogic.qml</file>
+        <file>ShareButton.qml</file>
+        <file>calcLogic.js</file>
     </qresource>
 </RCC>

@@ -12,6 +12,7 @@ Item {
     property alias displayer: displayer
 
     property alias btnShare: btnShare
+    property alias btnClean: btnClean
     property alias button0: button0
     property alias button9: button9
     property alias button8: button8
@@ -128,8 +129,8 @@ Item {
             calcValue: "+"
         }
 
-        CalcButton {
-            enabled: false
+        ShareButton {
+            id: btnShare
         }
 
         CalcButton {
@@ -139,12 +140,12 @@ Item {
         }
 
         Button {
-            id: btnShare
+            id: btnClean
             Layout.fillHeight: true
             Layout.fillWidth: true
             Layout.minimumHeight: 32
             Layout.minimumWidth: 32
-            text: "♥"
+            text: "C"
         }
 
         CalcButton {

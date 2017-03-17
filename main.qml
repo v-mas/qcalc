@@ -12,6 +12,11 @@ ApplicationWindow {
         Menu {
             title: qsTr("File")
             MenuItem {
+                text: qsTr("Clear")
+                onTriggered: mainPage.cleanCalc()
+            }
+            MenuSeparator {}
+            MenuItem {
                 text: qsTr("Exit")
                 onTriggered: Qt.quit();
             }
@@ -19,6 +24,7 @@ ApplicationWindow {
     }
 
     MainPage{
+        id: mainPage
         onPropagateCalcResult: {
             messageDialog.show(""+calcResult)
         }
