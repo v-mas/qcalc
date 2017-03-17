@@ -1,12 +1,17 @@
 import QtQuick 2.4
 import QtQuick.Controls 1.3
 import QtQuick.Dialogs 1.2
+import com.mirek.Wonderland 1.0
 import "."
 import "calcLogic.js" as CalcLogic
 
 MainForm {
     anchors.fill: parent
     signal propagateCalcResult(string calcResult)
+
+    Sharer {
+        id: sharer
+    }
 
     function cleanCalc() {
         CalcLogic.clear()
@@ -18,7 +23,8 @@ MainForm {
     }
 
     btnShare.onClicked: {
-
+        console.log("sharing: "+displayer.text)
+        sharer.share(displayer.text)
     }
 
     onCalcButtonPress: {
