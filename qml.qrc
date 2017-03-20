@@ -2,10 +2,12 @@
     <qresource prefix="/">
         <file>main.qml</file>
         <file>MainForm.ui.qml</file>
-        <file>CalcButton.qml</file>
         <file>MainPage.qml</file>
-        <file>CalculatorLogic.qml</file>
-        <file>ShareButton.qml</file>
         <file>calcLogic.js</file>
+        <file>qml_widgets/CalcButton.qml</file>
+        <file>qml_widgets/ActionButton.qml</file>
+        <file>qml_widgets/DigitButton.qml</file>
+        <file>qml_widgets/ShareButton.qml</file>
+        <file>logic/requests.js</file>
     </qresource>
 </RCC>

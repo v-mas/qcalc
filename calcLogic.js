@@ -1,5 +1,5 @@
-var enteredDigits = [];
-var enteredOperators = [];
+var enteredDigits = []
+var enteredOperators = []
 var one = -1.0
 var accResult = 0
 var isAccumulatedResultExist =  false
@@ -10,8 +10,8 @@ var secondArgument = 0
 var cleanInNextOperation = false
 
 function clear() {
-    enteredDigits = [];
-    enteredOperators = [];
+    enteredDigits = []
+    enteredOperators = []
     one = -1.0
     accResult = 0
     isAccumulatedResultExist =  false
@@ -20,14 +20,20 @@ function clear() {
     firstArgument = 0
     secondArgument = 0
     cleanInNextOperation = false
+
+    displayer.text = ""
 }
 
 function pushOperator(operator) {
     enteredOperators.push(operator)
+    displayer.text += operator
+    calculate()
 }
 
 function pushDigit(digit) {
     enteredDigits.push(parseFloat(digit))
+    displayer.text += digit
+    calculate()
 }
 
 function calculate() {
@@ -55,7 +61,37 @@ function calculate() {
 
         accResult = getResult(firstArgument, enteredOperator, secondArgument)
         cleanInNextOperation = true
-        propagateCalcResult(accResult)
+        notifyCalcResult(accResult)
+    }
+
+    function notifyCalcResult(calcResult) {
+
+        var firstEnteredOperator = getFirstEnteredOperator()
+        if (firstEnteredOperator === "" || firstEnteredOperator === "=") {
+            displayer.text = calcResult
+        } else {
+            displayer.text = calcResult + firstEnteredOperator
+        }
+
+        propagateCalcResult(calcResult)
+    }
+
+    function getFirstEnteredOperator() {
+        var firstEnteredOperator = ""
+        var enteredOperatorsLength = enteredOperators.length
+        if (enteredOperatorsLength > 0) {
+            firstEnteredOperator = enteredOperators[enteredOperatorsLength - 1]
+        }
+        return firstEnteredOperator
+    }
+
+    function getLastEnteredOperator() {
+        var lastEnteredOperator = ""
+        var enteredOperatorsLength = enteredOperators.length
+        if (enteredOperatorsLength > 0) {
+            lastEnteredOperator = enteredOperators[0]
+        }
+        return lastEnteredOperator
     }
 
     function cleanArgumentsFlags() {
@@ -108,7 +144,7 @@ function calculate() {
             cleanBufors()
         }
         cleanInNextOperation = true
-        propagateCalcResult(accResult)
+        notifyCalcResult(accResult)
         console.log("Result (after =):", accResult)
     } else if (!isAccumulatedResultExist) {
         console.log("5")
@@ -144,20 +180,7 @@ function calculate() {
     console.log("-----------------------")
 }
 
-function getFirstEnteredOperator() {
-    var firstEnteredOperator = ""
-    var enteredOperatorsLength = enteredOperators.length
-    if (enteredOperatorsLength > 0) {
-        firstEnteredOperator = enteredOperators[enteredOperatorsLength - 1]
-    }
-    return firstEnteredOperator
-}
-
-function getLastEnteredOperator() {
-    var lastEnteredOperator = ""
-    var enteredOperatorsLength = enteredOperators.length
-    if (enteredOperatorsLength > 0) {
-        lastEnteredOperator = enteredOperators[0]
-    }
-    return lastEnteredOperator
+function getSharableText() {
+    console.log("return sharable text: "+displayer.text)
+    return displayer.text
 }

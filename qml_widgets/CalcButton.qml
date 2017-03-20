@@ -7,11 +7,4 @@ Button {
     Layout.fillWidth: true
     Layout.minimumHeight: 32
     Layout.minimumWidth: 32
-
-    property string calcValue
-
-    onClicked: {
-        calcButtonPress(calcValue)
-    }
-
 }

@@ -4,6 +4,7 @@ import QtQuick.Dialogs 1.2
 import com.mirek.Wonderland 1.0
 import "."
 import "calcLogic.js" as CalcLogic
+import "logic/requests.js" as Requests
 
 MainForm {
     anchors.fill: parent
@@ -15,107 +16,29 @@ MainForm {
 
     function cleanCalc() {
         CalcLogic.clear()
-        displayer.text = ""
     }
 
-    btnClean.onClicked: {
-        cleanCalc()
-    }
+    btn1.onDigitClicked: CalcLogic.pushDigit(value)
+    btn2.onDigitClicked: CalcLogic.pushDigit(value)
+    btn3.onDigitClicked: CalcLogic.pushDigit(value)
+    btn4.onDigitClicked: CalcLogic.pushDigit(value)
+    btn5.onDigitClicked: CalcLogic.pushDigit(value)
+    btn6.onDigitClicked: CalcLogic.pushDigit(value)
+    btn7.onDigitClicked: CalcLogic.pushDigit(value)
+    btn8.onDigitClicked: CalcLogic.pushDigit(value)
+    btn9.onDigitClicked: CalcLogic.pushDigit(value)
+    btn0.onDigitClicked: CalcLogic.pushDigit(value)
 
-    btnShare.onClicked: {
-        console.log("sharing: "+displayer.text)
-        sharer.share(displayer.text)
-    }
+    btnAAddition.onActionClicked: CalcLogic.pushOperator(action)
+    btnAMultiplication.onActionClicked: CalcLogic.pushOperator(action)
+    btnASubtraction.onActionClicked: CalcLogic.pushOperator(action)
+    btnAResult.onActionClicked: CalcLogic.pushOperator(action)
 
-    onCalcButtonPress: {
-        switch (value) {
-        case "+":
-
-        case "-":
-
-        case "x":
-
-        case "=":
-            CalcLogic.pushOperator(value)
-            break
-        default:
-            CalcLogic.pushDigit(value)
-        }
-
-        displayer.text += value
-        CalcLogic.calculate()
-    }
-
+    btnClean.onClicked: cleanCalc()
+    btnShare.onClicked: sharer.share(CalcLogic.getSharableText())
 
     onPropagateCalcResult: {
-        var firstEnteredOperator = CalcLogic.getFirstEnteredOperator()
-        if (firstEnteredOperator === "" || firstEnteredOperator === "=") {
-            displayer.text = calcResult
-        } else {
-            displayer.text = calcResult + firstEnteredOperator
-        }
-
-       // makeGetRequest()
-        sendResultToFirebase(calcResult)
-    }
-
-    function sendResultToFirebase(calcResult){
-        var http = new XMLHttpRequest()
-        var url = "https://qcalc-cbb53.firebaseio.com/.json";
-
-        var jsonBuild = new Object()
-        jsonBuild.result = calcResult
-        var params1 = JSON.stringify(jsonBuild)
-
-        console.log("sent message:"+ params1)
-         http.open("POST", url, true);
-
-         // Send the proper header information along with the request
-         http.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-         http.setRequestHeader("Content-length", params1.length);
-         http.setRequestHeader("Connection", "close");
-
-         http.onreadystatechange = function() { // Call a function when the state changes.
-                     if (http.readyState == 4) {
-                         if (http.status == 200) {
-                             console.log("ok")
-                         } else {
-                             console.log("error: " + http.status)
-                         }
-                     }
-                 }
-         http.send(params1);
-    }
-
-    function makeGetRequest(){
-        request('https://qcalc-cbb53.firebaseio.com/.json', function (o) {
-            console.log("MyResponse:" + o.responseText)
-        })
-    }
-
-    function abcd(){
-        var doc = new XMLHttpRequest()
-        doc.onreadystatechange = function () {
-            if (doc.readyState === XMLHttpRequest.DONE) {
-                // otput response of request
-                console.log(doc.responseText)
-            }
-            console.log("request done:" + doc.statusText + "   " + doc.toString(
-                            ))
-        }
-        //doc.open("GET", "http://ip.jsontest.com/");
-        doc.open("GET", "https://qcalc-cbb53.firebaseio.com/.json")
-        doc.send()
-    }
-
-    function request(url, callback) {
-        var xhr = new XMLHttpRequest()
-        xhr.onreadystatechange = (function (myxhr) {
-            return function () {
-                callback(myxhr)
-            }
-        })(xhr)
-        xhr.open('GET', url, true)
-        xhr.send('')
+       // Requests.makeGetRequest()
+        Requests.sendResultToFirebase(calcResult)
     }
 }

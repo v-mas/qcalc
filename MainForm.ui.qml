@@ -2,6 +2,7 @@ import QtQuick 2.4
 import QtQuick.Controls 1.3
 import QtQuick.Layouts 1.1
 import QtQuick.Dialogs 1.2
+import "qml_widgets"
 
 Item {
     id: root
@@ -13,23 +14,26 @@ Item {
 
     property alias btnShare: btnShare
     property alias btnClean: btnClean
-    property alias button0: button0
-    property alias button9: button9
-    property alias button8: button8
-    property alias button7: button7
-    property alias button6: button6
-    property alias button5: button5
-    property alias button4: button4
-    property alias button3: button3
-    property alias button2: button2
-    property alias button1: button1
+
+    property alias btnAAddition: add
+    property alias btnASubtraction: minus
+    property alias btnAMultiplication: multiply
+    property alias btnAResult: equals
+
+    property alias btn0: button0
+    property alias btn1: button1
+    property alias btn2: button2
+    property alias btn3: button3
+    property alias btn4: button4
+    property alias btn5: button5
+    property alias btn6: button6
+    property alias btn7: button7
+    property alias btn8: button8
+    property alias btn9: button9
+
     property alias root: root
 
-    readonly property int bMinHeight: 32
-    readonly property int bMinWidth: 32
     readonly property int defaultMargin: 10
-
-    signal calcButtonPress(string value)
 
     TextArea {
         id: displayer
@@ -57,101 +61,83 @@ Item {
         rowSpacing: 10
         columns: 4
 
-        CalcButton {
+        DigitButton {
             id: button1
-            text: "1"
-            calcValue: "1"
+            digit: 1
         }
 
-        CalcButton {
+        DigitButton {
             id: button2
-            text: "2"
-            calcValue: "2"
+            digit: 2
         }
 
-        CalcButton {
+        DigitButton {
             id: button3
-            text: "3"
-            calcValue: "3"
+            digit: 3
         }
 
-        CalcButton {
+        ActionButton {
             id: multiply
-            text: "x"
-            calcValue: "x"
+            action: "x"
         }
 
-        CalcButton {
+        DigitButton {
             id: button4
-            text: "4"
-            calcValue: "4"
+            digit: 4
         }
 
-        CalcButton {
+        DigitButton {
             id: button5
-            text: "5"
-            calcValue: "5"
+            digit: 5
         }
 
-        CalcButton {
+        DigitButton {
             id: button6
-            text: "6"
-            calcValue: "6"
+            digit: 6
         }
 
-        CalcButton {
+        ActionButton {
             id: minus
-            text: "-"
-            calcValue: "-"
+            action: "-"
         }
 
-        CalcButton {
+        DigitButton {
             id: button7
-            text: "7"
-            calcValue: "7"
+            digit: 7
         }
 
-        CalcButton {
+        DigitButton {
             id: button8
-            text: "8"
-            calcValue: "8"
+            digit: 8
         }
 
-        CalcButton {
+        DigitButton {
             id: button9
-            text: "9"
-            calcValue: "9"
+            digit: 9
         }
 
-        CalcButton {
+        ActionButton {
             id: add
-            text: "+"
-            calcValue: "+"
+            action: "+"
         }
 
         ShareButton {
             id: btnShare
         }
 
-        CalcButton {
+        DigitButton {
             id: button0
-            text: "0"
-            calcValue: "0"
+            digit: 0
         }
 
-        Button {
+        CalcButton {
             id: btnClean
-            Layout.fillHeight: true
-            Layout.fillWidth: true
-            Layout.minimumHeight: 32
-            Layout.minimumWidth: 32
             text: "C"
         }
 
-        CalcButton {
+        ActionButton {
             id: equals
-            text: "="
-            calcValue: "="
+            action: "="
         }
     }
 }

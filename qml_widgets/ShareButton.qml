@@ -2,14 +2,10 @@ import QtQuick 2.4
 import QtQuick.Controls 1.3
 import QtQuick.Layouts 1.1
 
-Button {
+CalcButton {
     id: buttonRoot
-    Layout.fillHeight: true
-    Layout.fillWidth: true
-    Layout.minimumHeight: 32
-    Layout.minimumWidth: 32
 
-    property int pointSize: height * 0.3
+    property int pointSize: height * 0.2
 
     onPointSizeChanged: animatedText.restartAnimation()
 
@@ -71,7 +67,7 @@ Button {
         anchors.centerIn: parent
         horizontalAlignment: Text.Center
         color: "#e22424"
-        text: "♥"
+        text: "🖤"
         font.pointSize: buttonRoot.pointSize
     }
 }
