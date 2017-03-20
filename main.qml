@@ -1,12 +1,14 @@
-import QtQuick 2.4
-import QtQuick.Controls 1.3
+import QtQuick 2.5
+import QtQuick.Controls 1.4
 import QtQuick.Dialogs 1.2
 
 ApplicationWindow {
     visible: true
-    width: 480
-    height: 800
-    title: qsTr("Hello World")
+    width: 360
+    height: 520
+    minimumWidth: 240
+    minimumHeight: 400
+    title: qsTr("QCalc")
 
     menuBar: MenuBar {
         Menu {

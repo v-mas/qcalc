@@ -1,5 +1,5 @@
-import QtQuick 2.4
-import QtQuick.Controls 1.3
+import QtQuick 2.5
+import QtQuick.Controls 1.4
 import QtQuick.Layouts 1.1
 import QtQuick.Dialogs 1.2
 import "qml_widgets"
@@ -8,8 +8,6 @@ Item {
     id: root
     width: 480
     height: 800
-    Layout.minimumWidth: 240
-    Layout.minimumHeight: 400
     property alias displayer: displayer
 
     property alias btnShare: btnShare

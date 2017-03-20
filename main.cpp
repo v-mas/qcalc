@@ -2,7 +2,6 @@
 #include <QQmlApplicationEngine>
 #include <QSslSocket>
 #include <QtNetwork>
-#include <QCoreApplication>
 #include <QDebug>
 #include <QNetworkReply>
 #include <QNetworkAccessManager>

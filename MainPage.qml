@@ -1,8 +1,7 @@
-import QtQuick 2.4
-import QtQuick.Controls 1.3
+import QtQuick 2.5
+import QtQuick.Controls 1.4
 import QtQuick.Dialogs 1.2
 import com.mirek.Wonderland 1.0
-import "."
 import "calcLogic.js" as CalcLogic
 import "logic/requests.js" as Requests
 
