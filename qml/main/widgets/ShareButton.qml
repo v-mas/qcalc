@@ -5,9 +5,14 @@ import QtQuick.Layouts 1.1
 CalcButton {
     id: buttonRoot
 
-    property int pointSize: height * 0.2
+    property int pointSize: 16
 
-    onPointSizeChanged: animatedText.restartAnimation()
+    onPointSizeChanged: {animatedText.restartAnimation()}
+
+    Component.onCompleted: {
+        animatedText.runAnimation = Qt.binding(function() { return !pressed })
+        pointSize = Qt.binding(function() { return height * 0.3 })
+    }
 
     Text {
         id: animatedText
@@ -16,9 +21,9 @@ CalcButton {
         text: mainText.text
         horizontalAlignment: Text.Center
 
-        property bool runAnimation: !parent.pressed
+        property bool runAnimation: false
         property double animVal: buttonRoot.pointSize
-        font.pointSize: animVal
+        font.pixelSize: animVal
 
         function restartAnimation() {
             anim.restart()
@@ -68,6 +73,6 @@ CalcButton {
         horizontalAlignment: Text.Center
         color: "#e22424"
         text: "♥"
-        font.pointSize: buttonRoot.pointSize
+        font.pixelSize: buttonRoot.pointSize
     }
 }

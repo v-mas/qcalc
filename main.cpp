@@ -49,16 +49,14 @@ int main(int argc, char *argv[])
                     MessageReceiver::instance()->moveToThread(qmlThread);
                 });
 
-    qmlRegisterUncreatableType<MessageReceiver>("com.mirek.Receiver", 1, 0, "MessageReceiver", "do not create message receiver");
     engine.rootContext()->setContextProperty("messageReceiver", MessageReceiver::instance());
-    engine.load(QUrl(QStringLiteral("qrc:/window.qml")));
+#endif
 
+    engine.load(QUrl(QStringLiteral("qrc:/window.qml")));
     int result = app.exec();
 
+#ifdef Q_OS_ANDROID
     MessageReceiver::instance()->moveToThread(androidUIThread);
-#else
-    engine.load(QUrl(QStringLiteral("qrc:/window.qml")));
-    int result = app.exec();
 #endif
     return result;
 }
