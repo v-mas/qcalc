@@ -1,6 +1,6 @@
 TEMPLATE = app
 
-QT += widgets qml quick network
+QT += widgets qml quick network quickcontrols2
 
 CONFIG += c++11 openssl-linked
 win32:CONFIG(debug, debug|release): CONFIG += console

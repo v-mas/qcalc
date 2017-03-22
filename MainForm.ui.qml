@@ -1,13 +1,14 @@
 import QtQuick 2.5
-import QtQuick.Controls 1.4
+import QtQuick.Controls 2.1
 import QtQuick.Layouts 1.1
 import QtQuick.Dialogs 1.2
 import "qml_widgets"
 
-Item {
+Rectangle {
     id: root
     width: 480
     height: 800
+    color: "#fff"
     property alias displayer: displayer
 
     property alias btnShare: btnShare
@@ -43,6 +44,9 @@ Item {
         anchors.bottomMargin: defaultMargin
         anchors.left: parent.left
         anchors.leftMargin: defaultMargin
+        background: Rectangle {
+            color: "#eee"
+        }
     }
 
     GridLayout {

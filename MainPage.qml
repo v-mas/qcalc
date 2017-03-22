@@ -1,5 +1,5 @@
 import QtQuick 2.5
-import QtQuick.Controls 1.4
+import QtQuick.Controls 2.1
 import QtQuick.Dialogs 1.2
 import com.mirek.Wonderland 1.0
 import "calcLogic.js" as CalcLogic
