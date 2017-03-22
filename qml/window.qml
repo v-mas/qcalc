@@ -12,21 +12,55 @@ ApplicationWindow {
 
     menuBar: MenuBar {
         Menu {
-            title: qsTr("File")
+            title: qsTr("&File")
             MenuItem {
-                text: qsTr("Clear")
-                onTriggered: mainPage.cleanCalc()
+                text: qsTr("&Clear")
+                onTriggered: mainContainer.item.cleanCalc()
             }
             MenuSeparator {}
             MenuItem {
-                text: qsTr("Exit")
+                text: qsTr("&Logout")
+                onTriggered: {
+                    console.log("logged out");
+                    pageUrl = "LoginPage.qml"
+                }
+            }
+
+            MenuItem {
+                text: qsTr("E&xit")
                 onTriggered: Qt.quit();
             }
         }
     }
 
-    MainPage{
-        id: mainPage
+    property string pageUrl: ""
+    onPageUrlChanged: {
+        console.log("changing page to: "+pageUrl)
+    }
+
+    Component.onCompleted: {
+        pageUrl = "LoginPage.qml"
+    }
+
+    Loader {
+        id: mainContainer
+        anchors.fill: parent
+        source: pageUrl
+    }
+
+    Connections { // LoginPage.qml
+        target: mainContainer.item
+        ignoreUnknownSignals: true
+        onLoggedIn: {
+            console.log("logged in !!")
+            pageUrl = "MainPage.qml"
+        }
+
+    }
+
+    Connections { // MainPage.qml
+        target: mainContainer.item
+        ignoreUnknownSignals: true
         onPropagateCalcResult: {
             messageDialog.show(""+calcResult)
         }
