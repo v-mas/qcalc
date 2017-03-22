@@ -1,0 +1,6 @@
+<RCC>
+    <qresource prefix="/">
+        <file>window.qml</file>
+        <file>logic/requests.js</file>
+    </qresource>
+</RCC>

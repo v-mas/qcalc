@@ -51,13 +51,13 @@ int main(int argc, char *argv[])
 
     qmlRegisterUncreatableType<MessageReceiver>("com.mirek.Receiver", 1, 0, "MessageReceiver", "do not create message receiver");
     engine.rootContext()->setContextProperty("messageReceiver", MessageReceiver::instance());
-    engine.load(QUrl(QStringLiteral("qrc:/main.qml")));
+    engine.load(QUrl(QStringLiteral("qrc:/window.qml")));
 
     int result = app.exec();
 
     MessageReceiver::instance()->moveToThread(androidUIThread);
 #else
-    engine.load(QUrl(QStringLiteral("qrc:/main.qml")));
+    engine.load(QUrl(QStringLiteral("qrc:/window.qml")));
     int result = app.exec();
 #endif
     return result;

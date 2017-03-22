@@ -3,7 +3,7 @@ import QtQuick.Controls 2.1
 import QtQuick.Dialogs 1.2
 import com.mirek.Wonderland 1.0
 import "calcLogic.js" as CalcLogic
-import "logic/requests.js" as Requests
+import "qrc:///logic/requests.js" as Requests
 
 MainForm {
     anchors.fill: parent

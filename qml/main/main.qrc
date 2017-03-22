@@ -1,0 +1,11 @@
+<RCC>
+    <qresource prefix="/">
+        <file>widgets/ActionButton.qml</file>
+        <file>widgets/CalcButton.qml</file>
+        <file>widgets/DigitButton.qml</file>
+        <file>widgets/ShareButton.qml</file>
+        <file>calcLogic.js</file>
+        <file>MainForm.ui.qml</file>
+        <file>MainPage.qml</file>
+    </qresource>
+</RCC>

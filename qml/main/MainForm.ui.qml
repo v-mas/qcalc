@@ -2,7 +2,7 @@ import QtQuick 2.5
 import QtQuick.Controls 2.1
 import QtQuick.Layouts 1.1
 import QtQuick.Dialogs 1.2
-import "qml_widgets"
+import "widgets"
 
 Rectangle {
     id: root
