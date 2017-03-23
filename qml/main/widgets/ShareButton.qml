@@ -7,11 +7,11 @@ CalcButton {
 
     property int pointSize: 16
 
-    onPointSizeChanged: {animatedText.restartAnimation()}
+    onPointSizeChanged: animatedText.restartAnimation()
 
     Component.onCompleted: {
-        animatedText.runAnimation = Qt.binding(function() { return !pressed })
-        pointSize = Qt.binding(function() { return height * 0.3 })
+        animatedText.runAnimation = Qt.binding(function () { return !pressed })
+        pointSize = Qt.binding(function () { return height * 0.3 })
     }
 
     Text {
@@ -37,7 +37,8 @@ CalcButton {
                 animatedText.color = mainText.color
             }
             onStopped: {
-                if (animatedText.runAnimation) start()
+                if (animatedText.runAnimation)
+                    start()
             }
 
             NumberAnimation {
@@ -46,7 +47,7 @@ CalcButton {
                 target: animatedText
                 property: "animVal"
                 from: buttonRoot.pointSize
-                to: buttonRoot.pointSize*2.5
+                to: buttonRoot.pointSize * 2.5
             }
             SequentialAnimation {
                 PauseAnimation {
@@ -63,7 +64,6 @@ CalcButton {
                     duration: 400
                 }
             }
-
         }
     }
 

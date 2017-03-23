@@ -26,14 +26,14 @@ ApplicationWindow {
                 visible: pageNum != 0
                 text: qsTr("&Login")
                 onTriggered: {
-                    console.log("logged out");
+                    console.log("logged out")
                     pageNum = 0
                 }
             }
 
             MenuItem {
                 text: qsTr("E&xit")
-                onTriggered: Qt.quit();
+                onTriggered: Qt.quit()
             }
         }
     }
@@ -42,7 +42,7 @@ ApplicationWindow {
     property int pageNum
 
     onPageNumChanged: {
-        console.log("change page to: ["+pageNum+"] "+pageUrls[pageNum])
+        console.log("change page to: [" + pageNum + "] " + pageUrls[pageNum])
     }
 
     Component.onCompleted: {
@@ -63,7 +63,6 @@ ApplicationWindow {
             console.log("logged in !!")
             pageNum = 1
         }
-
     }
 
     Connections { // MainPage.qml
@@ -71,7 +70,7 @@ ApplicationWindow {
         target: mainContainer.item
         ignoreUnknownSignals: true
         onPropagateCalcResult: {
-            messageDialog.show(""+calcResult)
+            messageDialog.show("" + calcResult)
         }
     }
 
@@ -81,18 +80,17 @@ ApplicationWindow {
         onMessageReceived: {
             console.log("message received")
             console.log(message)
-            messageDialog.show("message received: "+message)
+            messageDialog.show("message received: " + message)
         }
     }
 
-    MessageDialog{
+    MessageDialog {
         id: messageDialog
         title: qsTr("May I have your attention, please?")
 
         function show(caption) {
-            messageDialog.text = caption;
-            messageDialog.open();
+            messageDialog.text = caption
+            messageDialog.open()
         }
     }
-
 }

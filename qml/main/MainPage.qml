@@ -37,7 +37,7 @@ MainForm {
     btnShare.onClicked: sharer.share(CalcLogic.getSharableText())
 
     onPropagateCalcResult: {
-       // Requests.makeGetRequest()
+        // Requests.makeGetRequest()
         Requests.sendResultToFirebase(calcResult)
     }
 }
