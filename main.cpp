@@ -12,6 +12,7 @@
 #include <openssl/crypto.h>
 #include "messagereceiver.h"
 #include "sharer.h"
+#include "loginsuite.h"
 
 #ifdef Q_OS_ANDROID
 #include <QtAndroid>
@@ -35,6 +36,7 @@ int main(int argc, char *argv[])
 
     //sendRequest();
     qmlRegisterType<Sharer>("com.mirek.Wonderland", 1, 0, "Sharer");
+    qmlRegisterType<LoginSuite>("Login.Suite", 1, 0, "LoginSuite");
 
 #ifdef Q_OS_ANDROID
     QAndroidJniObject token = QAndroidJniObject::callStaticObjectMethod("com/example/mirek/fcmreceiver/FirebaseTokenProvider", "getDeviceToken", "()Ljava/lang/String;");

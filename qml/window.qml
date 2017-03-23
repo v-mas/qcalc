@@ -1,6 +1,7 @@
 import QtQuick 2.5
 import QtQuick.Controls 1.4
 import QtQuick.Dialogs 1.2
+import Login.Suite 1.0
 
 ApplicationWindow {
     visible: true
@@ -26,6 +27,7 @@ ApplicationWindow {
                 visible: pageNum != 0
                 text: qsTr("&Login")
                 onTriggered: {
+                    loginSuite.logout()
                     console.log("logged out")
                     pageNum = 0
                 }
@@ -40,6 +42,13 @@ ApplicationWindow {
 
     readonly property var pageUrls: ["LoginPage.qml", "MainPage.qml"]
     property int pageNum
+    readonly property LoginSuite loginSuite: LoginSuite {
+        loginProvider: LoginSuite.Google
+        onLoginResult: {
+            console.log("logged in !!")
+            pageNum = 1
+        }
+    }
 
     onPageNumChanged: {
         console.log("change page to: [" + pageNum + "] " + pageUrls[pageNum])
@@ -48,6 +57,8 @@ ApplicationWindow {
     Component.onCompleted: {
         pageNum = 1
     }
+
+
 
     Loader {
         id: mainContainer
@@ -60,8 +71,9 @@ ApplicationWindow {
         target: mainContainer.item
         ignoreUnknownSignals: true
         onLoggedIn: {
-            console.log("logged in !!")
-            pageNum = 1
+            loginSuite.login();
+//            console.log("logged in !!")
+//            pageNum = 1
         }
     }
 

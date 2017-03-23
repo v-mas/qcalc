@@ -1,13 +1,14 @@
 TEMPLATE = app
 
-QT += widgets qml quick network quickcontrols2
+QT += widgets qml quick network quickcontrols2 networkauth
 
 CONFIG += c++11 openssl-linked
 win32:CONFIG(debug, debug|release): CONFIG += console
 
 SOURCES += main.cpp \
     messagereceiver.cpp \
-    sharer.cpp
+    sharer.cpp \
+    loginsuite.cpp
 
 RESOURCES += \
     qml/qml.qrc \
@@ -43,7 +44,8 @@ DISTFILES += \
 
 HEADERS += \
     messagereceiver.h \
-    sharer.h
+    sharer.h \
+    loginsuite.h
 
 include(paths.pri)
 include(openssl.pri)
