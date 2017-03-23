@@ -14,15 +14,20 @@ ApplicationWindow {
         Menu {
             title: qsTr("&File")
             MenuItem {
+                id: menuClear
+                visible: pageNum == 1
                 text: qsTr("&Clear")
                 onTriggered: mainContainer.item.cleanCalc()
             }
-            MenuSeparator {}
+            MenuSeparator {
+                visible: menuClear.visible
+            }
             MenuItem {
-                text: qsTr("&Logout")
+                visible: pageNum != 0
+                text: qsTr("&Login")
                 onTriggered: {
                     console.log("logged out");
-                    pageUrl = "LoginPage.qml"
+                    pageNum = 0
                 }
             }
 
@@ -33,32 +38,36 @@ ApplicationWindow {
         }
     }
 
-    property string pageUrl: ""
-    onPageUrlChanged: {
-        console.log("changing page to: "+pageUrl)
+    readonly property var pageUrls: ["LoginPage.qml", "MainPage.qml"]
+    property int pageNum
+
+    onPageNumChanged: {
+        console.log("change page to: ["+pageNum+"] "+pageUrls[pageNum])
     }
 
     Component.onCompleted: {
-        pageUrl = "LoginPage.qml"
+        pageNum = 1
     }
 
     Loader {
         id: mainContainer
         anchors.fill: parent
-        source: pageUrl
+        source: pageUrls[pageNum]
     }
 
     Connections { // LoginPage.qml
+        enabled: pageNum == 0
         target: mainContainer.item
         ignoreUnknownSignals: true
         onLoggedIn: {
             console.log("logged in !!")
-            pageUrl = "MainPage.qml"
+            pageNum = 1
         }
 
     }
 
     Connections { // MainPage.qml
+        enabled: pageNum == 1
         target: mainContainer.item
         ignoreUnknownSignals: true
         onPropagateCalcResult: {
@@ -67,6 +76,7 @@ ApplicationWindow {
     }
 
     Connections {
+        enabled: pageNum != 0
         target: messageReceiver
         onMessageReceived: {
             console.log("message received")
