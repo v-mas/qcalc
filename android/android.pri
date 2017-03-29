@@ -17,9 +17,9 @@ DISTFILES += \
     $$MODULE_DIR/google-services.json \
     $$MODULE_DIR/AndroidManifest.xml \
     $$MODULE_DIR/res/values/libs.xml \
-    $$MODULE_DIR/src/java/com/example/mirek/fcmreceiver/MyApplication.java \
-    $$MODULE_DIR/src/java/com/example/mirek/fcmreceiver/FirebaseTokenProvider.java \
-    $$MODULE_DIR/src/java/com/example/mirek/fcmreceiver/MyFirebaseMessagesService.java \
+    $$MODULE_DIR/src/com/example/mirek/fcmreceiver/MyApplication.java \
+    $$MODULE_DIR/src/com/example/mirek/fcmreceiver/FirebaseTokenProvider.java \
+    $$MODULE_DIR/src/com/example/mirek/fcmreceiver/MyFirebaseMessagesService.java \
     $$MODULE_DIR/jniLibs/armeabi/libcrypto.so \
     $$MODULE_DIR/jniLibs/armeabi/libssl.so \
     $$MODULE_DIR/jniLibs/x86/libcrypto.so \
