@@ -17,6 +17,7 @@ DISTFILES += \
     $$MODULE_DIR/google-services.json \
     $$MODULE_DIR/AndroidManifest.xml \
     $$MODULE_DIR/res/values/libs.xml \
+    $$MODULE_DIR/src/com/example/mirek/fcmreceiver/Callback.java \
     $$MODULE_DIR/src/com/example/mirek/fcmreceiver/MyApplication.java \
     $$MODULE_DIR/src/com/example/mirek/fcmreceiver/FirebaseTokenProvider.java \
     $$MODULE_DIR/src/com/example/mirek/fcmreceiver/MyFirebaseMessagesService.java \
