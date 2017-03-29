@@ -6,7 +6,8 @@
 
 LoginSuite::LoginSuite(QObject *parent)
     : QObject(parent),
-      m_provider(LoginSuite::PROVIDER::Google)
+      m_provider(LoginSuite::PROVIDER::Google),
+      flow(Q_NULLPTR)
 {
 
 }
@@ -30,7 +31,7 @@ void LoginSuite::login()
         auto replyHandler = new QOAuthHttpServerReplyHandler(8080, this);
         flow->setReplyHandler(replyHandler);
 
-//        QObject::connect(flow, &QOAuth2AuthorizationCodeFlow::finished, this, &LoginSuite::finishedGoogle);
+        QObject::connect(flow, &QOAuth2AuthorizationCodeFlow::finished, this, &LoginSuite::finishedGoogle);
         QObject::connect(flow, &QOAuth2AuthorizationCodeFlow::granted, this, &LoginSuite::grantedGoogle);
 
         flow->grant();

@@ -3,6 +3,7 @@
 
 #include <QObject>
 #include <QOAuth2AuthorizationCodeFlow>
+#include <QNetworkReply>
 
 class LoginSuite : public QObject
 {
